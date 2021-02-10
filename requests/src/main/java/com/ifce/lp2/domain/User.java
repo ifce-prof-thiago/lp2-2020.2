@@ -2,9 +2,14 @@ package com.ifce.lp2.domain;
 
 public class User {
 
+    private String id;
     private String username;
     private String password;
     private String email;
+
+    public String getId() {
+        return id;
+    }
 
     public String getEmail() {
         return email;
@@ -16,6 +21,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {

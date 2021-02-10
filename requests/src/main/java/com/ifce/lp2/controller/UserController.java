@@ -3,9 +3,14 @@ package com.ifce.lp2.controller;
 import com.ifce.lp2.domain.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("users")
 public class UserController {
+
+    private static HashMap<String, User> repository = new HashMap<>();
 
     @GetMapping
     public String get() {
@@ -13,11 +18,12 @@ public class UserController {
     }
 
     @PostMapping
-    public String post(User user) {
-        System.out.println(user.getEmail());
-        System.out.println(user.getPassword());
-        System.out.println(user.getUsername());
-        return "Criar um novo usuário";
+    public User post(@RequestBody User user) {
+        user.setId(UUID.randomUUID().toString());
+
+        repository.put(user.getId(), user);
+
+        return user;
     }
 
     @PutMapping
