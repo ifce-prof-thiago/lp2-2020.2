@@ -27,9 +27,13 @@ public class UserController {
         return user;
     }
 
-    @PutMapping
-    public String put() {
-        return "Atualizar um usuário existente";
+    @PutMapping("{userId}")
+    public User put(@PathVariable String userId, @RequestBody User user) {
+        user.setId(userId);
+
+        repository.put(userId, user);
+
+        return repository.get(userId);
     }
 
     @DeleteMapping
