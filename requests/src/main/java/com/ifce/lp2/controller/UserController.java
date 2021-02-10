@@ -3,6 +3,7 @@ package com.ifce.lp2.controller;
 import com.ifce.lp2.domain.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -13,8 +14,8 @@ public class UserController {
     private static HashMap<String, User> repository = new HashMap<>();
 
     @GetMapping
-    public String get() {
-        return "Listar todos os usuários";
+    public Collection<User> get() {
+        return repository.values();
     }
 
     @PostMapping
