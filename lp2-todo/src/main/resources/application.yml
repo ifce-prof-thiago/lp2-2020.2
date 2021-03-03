@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://eduqhub:fuz0WelmanjxIj5i@eduqhub.0dxsu.mongodb.net/todo
