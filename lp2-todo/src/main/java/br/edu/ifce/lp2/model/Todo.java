@@ -12,7 +12,6 @@ import java.util.Date;
 public class Todo {
 
     private String id;
-    private String todo;
     private String description;
     private boolean completed;
     private Date createdAt;
