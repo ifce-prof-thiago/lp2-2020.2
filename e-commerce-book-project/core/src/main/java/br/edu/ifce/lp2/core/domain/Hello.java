@@ -6,5 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Hello {
+
     private String msg;
+
+    public void print() {
+        System.out.println(msg);
+    }
 }
