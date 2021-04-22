@@ -6,4 +6,8 @@ public interface ClientRepositoryPort {
 
     Client save(Client client);
 
+    boolean existsByEmail(String email);
+
+    Client findByTokenValue(String value);
+
 }
