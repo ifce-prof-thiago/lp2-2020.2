@@ -13,7 +13,7 @@ public class Token {
     private LocalDateTime expireAt;
 
     public Token() {
-        this.expireAt = LocalDateTime.now().plusSeconds(30);
+        this.expireAt = LocalDateTime.now().plusDays(1);
     }
 
     public boolean hasExpired() {
