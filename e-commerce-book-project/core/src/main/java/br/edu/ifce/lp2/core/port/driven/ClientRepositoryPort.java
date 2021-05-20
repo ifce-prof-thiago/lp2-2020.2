@@ -8,6 +8,8 @@ public interface ClientRepositoryPort {
 
     boolean existsByEmail(String email);
 
+    Client findByEmail(String username);
+
     Client findByTokenValue(String value);
 
 }

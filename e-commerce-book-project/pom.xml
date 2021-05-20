@@ -17,6 +17,7 @@
     <modules>
         <module>core</module>
         <module>mongo.repository</module>
+        <module>security</module>
     </modules>
 
     <dependencies>
@@ -40,6 +41,7 @@
             <artifactId>lombok</artifactId>
             <version>1.18.18</version>
         </dependency>
+
     </dependencies>
 
     <build>
