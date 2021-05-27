@@ -15,7 +15,7 @@ public class LoginUs implements LoginPort {
     private final GenerateJWTPort generateJWTPort;
 
     @Override
-    public String execute(String username, String password) {
+    public String execute(String username, String password, String fingerprint) {
 
         var client = repository.findByEmail(username);
 
@@ -23,7 +23,7 @@ public class LoginUs implements LoginPort {
             throw new IllegalArgumentException("Usuário inválido!");
         }
 
-        return generateJWTPort.execute(client, "xyx");
+        return generateJWTPort.execute(client, fingerprint);
 
     }
 }

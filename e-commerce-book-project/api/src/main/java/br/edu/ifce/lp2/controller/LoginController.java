@@ -8,18 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RequestMapping("/login")
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
 
     private final LoginPort loginPort;
+    private final HttpServletRequest http;
 
     @PostMapping
     public String post(@RequestBody LoginRequest request) {
         var client = request.toClient();
 
-        return loginPort.execute(client.getEmail(), client.getPassword());
+        var userAgent = http.getHeader("User-Agent");
+
+        return loginPort.execute(client.getEmail(), client.getPassword(), userAgent);
     }
 
 }

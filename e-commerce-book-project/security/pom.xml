@@ -18,5 +18,11 @@
             <artifactId>core</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.5</version>
+        </dependency>
     </dependencies>
 </project>
