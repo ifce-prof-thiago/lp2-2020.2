@@ -19,7 +19,7 @@ public class LoginUs implements LoginPort {
 
         var client = repository.findByEmail(username);
 
-        if (client == null || !client.getPassword().equals(password)) {
+        if (client == null || !client.getPassword().equals(password) || !client.isEnabled()) {
             throw new IllegalArgumentException("Usuário inválido!");
         }
 

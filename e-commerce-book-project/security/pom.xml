@@ -24,5 +24,13 @@
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>9.5</version>
         </dependency>
+
+        <!--        TODO Revisar as compatibilidades-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>9.0.45</version>
+        </dependency>
+
     </dependencies>
 </project>

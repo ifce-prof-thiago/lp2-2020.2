@@ -111,8 +111,7 @@ public final class Keys {
     };
 
     public static int randomIndex() {
-        var random = new SecureRandom();
-        return random.nextInt(values.length);
+        return new SecureRandom().nextInt(values.length);
     }
 
     public static byte[] get(int index, String fingerprint) {
