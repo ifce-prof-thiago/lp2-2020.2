@@ -10,9 +10,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Document
-public class Client {
+public class Client extends AbstractEntity {
 
-    private String id;
     private String name;
     private String email;
     private String password;
@@ -24,6 +23,22 @@ public class Client {
     public enum Permission {
         ROLE_ADMIN,
         ROLE_USER
+    }
+
+    public boolean isAdmin() {
+        return permissions.contains(Permission.ROLE_ADMIN);
+    }
+
+    public boolean isNotAdmin() {
+        return !isAdmin();
+    }
+
+    public boolean isUser() {
+        return permissions.contains(Permission.ROLE_USER);
+    }
+
+    public boolean isNotUser() {
+        return !isUser();
     }
 
 }

@@ -17,7 +17,8 @@ public class EnableOrDisableClientByIdUS implements EnableOrDisableClientByIdPor
 
     @Override
     public void execute(String id, boolean enable) {
-        securityContextPort.isAdmin();
+
+        restrictions();
 
         var client = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Usuário não encontrado"));
 
@@ -25,5 +26,10 @@ public class EnableOrDisableClientByIdUS implements EnableOrDisableClientByIdPor
 
         repository.save(client);
 
+    }
+
+    private void restrictions() {
+        if (securityContextPort.isNotAdmin() || securityContextPort.isNotEnabled())
+            throw new IllegalArgumentException("Usuário não tem permissão para executar esta ação");
     }
 }

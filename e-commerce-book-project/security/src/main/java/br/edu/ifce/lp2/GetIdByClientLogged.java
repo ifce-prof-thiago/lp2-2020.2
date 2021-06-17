@@ -1,6 +1,6 @@
 package br.edu.ifce.lp2;
 
-import br.edu.ifce.lp2.core.port.driven.GetIdByUserLoggedPort;
+import br.edu.ifce.lp2.core.port.driven.GetIdByClientLoggedPort;
 import br.edu.ifce.lp2.core.port.driven.VerifyJWTPort;
 import com.nimbusds.jwt.SignedJWT;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Named
 @RequiredArgsConstructor
-public class GetIdByUserLogged implements GetIdByUserLoggedPort {
+public class GetIdByClientLogged implements GetIdByClientLoggedPort {
 
     private final HttpServletRequest http;
     private final VerifyJWTPort verifyJWTPort;

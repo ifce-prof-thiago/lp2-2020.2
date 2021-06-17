@@ -1,46 +1,45 @@
 package br.edu.ifce.lp2;
 
-import br.edu.ifce.lp2.core.domain.Client;
-import br.edu.ifce.lp2.core.port.driven.ClientRepositoryPort;
-import br.edu.ifce.lp2.core.port.driven.GetIdByUserLoggedPort;
+import br.edu.ifce.lp2.core.port.driven.GetClientLoggedPort;
 import br.edu.ifce.lp2.core.port.driven.SecurityContextPort;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
-import java.util.NoSuchElementException;
 
 @Named
 @RequiredArgsConstructor
 public class SecurityContext implements SecurityContextPort {
 
-    private final GetIdByUserLoggedPort getIdByUserLoggedPort;
-    private final ClientRepositoryPort repository;
+    private final GetClientLoggedPort getClientLogged;
 
     @Override
-    public SecurityContextPort isAdmin() {
-
-        var userLogged = repository.findById(getIdByUserLoggedPort.execute()).orElseThrow(() -> new NoSuchElementException("Usuário logado não existe"));
-
-        if (!userLogged.getPermissions().contains(Client.Permission.ROLE_ADMIN)) {
-            throw new IllegalArgumentException("User not is ADMIN");
-        }
-
-        return this;
-
+    public boolean isAdmin() {
+        return getClientLogged.execute().isAdmin();
     }
 
     @Override
-    public SecurityContextPort isUser() {
-
-        var userLogged = repository.findById(getIdByUserLoggedPort.execute()).orElseThrow(() -> new NoSuchElementException("Usuário logado não existe"));
-
-        if (!userLogged.getPermissions().contains(Client.Permission.ROLE_USER)) {
-            throw new IllegalArgumentException("User not is USER");
-        }
-
-        return this;
-
+    public boolean isUser() {
+        return getClientLogged.execute().isUser();
     }
 
+    @Override
+    public boolean isEnabled() {
+        return getClientLogged.execute().isEnabled();
+    }
+
+    @Override
+    public boolean isNotAdmin() {
+        return !isAdmin();
+    }
+
+    @Override
+    public boolean isNotUser() {
+        return !isUser();
+    }
+
+    @Override
+    public boolean isNotEnabled() {
+        return !isEnabled();
+    }
 
 }
