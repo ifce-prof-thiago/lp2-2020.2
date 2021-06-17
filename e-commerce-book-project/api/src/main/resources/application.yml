@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      uri: mongodb+srv://educ4:Xee6k5svsWsOMNrk@cluster0.pyxqz.mongodb.net/lp2
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
